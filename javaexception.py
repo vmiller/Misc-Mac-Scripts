@@ -11,7 +11,6 @@
 # our desired exceptions.  Script can also remove exceptions from the list.
 
 import os
-from Foundation import NSUserName
 
 # Modify these two lists.  Lists are allowed to be empty.
 #======================================================================
@@ -20,10 +19,9 @@ EXCEPTION_LIST=[]
 REMOVE_LIST=[]
 #=======================================================================
 
-# Get the current user and build the path to their exception list
-currentUser=NSUserName()
-exceptionFile='/Users/' + currentUser + \
-    '/Library/Application Support/Oracle/Java/Deployment/security/exception.sites'
+# Build the path to the users exception list
+exceptionFile=os.path.expanduser(
+    '~/Library/Application Support/Oracle/Java/Deployment/security/exception.sites')
 
 
 if os.path.exists(exceptionFile):
